@@ -1,24 +1,27 @@
-import React from 'react'
-import './Navbar.css';
 
+import React, { Children } from "react";
+import "./Navbar.css";
+const path = window.location.pathname;
 function Navbar() {
-    return (
-  <>
-  <nav className='nav'>
-    <a href="/" className='site-title'>Site Name</a>
-    <ul>
-      <li className='active'>
-        <a href="/pricing">Pricing</a>
-        </li>
-        <li>
-        <a href="/about">About</a>
-      </li>
-    </ul>
-  </nav>
+  return (
+      <nav className="nav">
+        <a href="/" className="site-title">
+          Site Name
+        </a>
+       <ul>
+          <CustomLink href={"/pricing"}>Pricing</CustomLink>
+          <CustomLink href={"/about"}>About</CustomLink>
+       </ul>
+      </nav>
+  );
+}
 
-  </>
+function CustomLink({ href, children, ...props}) {
+  return (
+    <li>
+      <a href={href}>{children}</a>
+    </li>
   )
 }
 
-export default Navbar
-
+export default Navbar;
